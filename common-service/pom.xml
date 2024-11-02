@@ -21,6 +21,8 @@
         <module>user</module>
         <module>distributedid</module>
         <module>convention</module>
+        <module>database</module>
+        <module>common</module>
     </modules>
 
 
@@ -44,10 +46,18 @@
         <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
         <hippo4j-threadpool-config-mode.version>1.5.0</hippo4j-threadpool-config-mode.version>
         <micrometer-registry-prometheus.version>1.10.6</micrometer-registry-prometheus.version>
+        <swagger.version>4.5.0</swagger.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- swagger 接口文档增强 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
