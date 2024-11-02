@@ -24,6 +24,7 @@
         <module>database</module>
         <module>common</module>
         <module>web</module>
+        <module>log</module>
     </modules>
 
 
@@ -48,10 +49,16 @@
         <hippo4j-threadpool-config-mode.version>1.5.0</hippo4j-threadpool-config-mode.version>
         <micrometer-registry-prometheus.version>1.10.6</micrometer-registry-prometheus.version>
         <swagger.version>4.5.0</swagger.version>
+        <aop.version>3.3.3</aop.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${aop.version}</version>
+            </dependency>
             <!-- swagger 接口文档增强 -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
