@@ -1,2 +1,25 @@
 server:
-  port: 8084
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  profiles:
+    active: local
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${ips.nacos.ip}
+  data:
+    redis:
+      # Redis服务器地址
+      host: ${ips.redis.host}
+      # Redis服务器端口号
+      port: ${ips.redis.port}
+      # 使用的数据库索引，默认是0
+      database: 0
+      # 连接超时时间
+      timeout: 1800000
+      # 设置密码
+      password: ${ips.redis.password}
+

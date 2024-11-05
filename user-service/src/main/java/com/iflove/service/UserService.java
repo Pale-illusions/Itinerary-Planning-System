@@ -26,4 +26,9 @@ public interface UserService {
      */
     void register(@Valid UserRegisterReq req);
 
+    /**
+     * 登出
+     * @param tokenId tokenId
+     */
+    void logout(String tokenId);
 }

@@ -31,7 +31,7 @@ CREATE TABLE `route`(
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`(
                        `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                       `name` VARCHAR(255) NOT NULL COMMENT '用户名',
+                       `name` VARCHAR(255) UNIQUE NOT NULL COMMENT '用户名',
                        `password` VARCHAR(255) NOT NULL COMMENT '密码',
                        `create_time` DATETIME NOT NULL DEFAULT Now() COMMENT '创建时间',
                        `update_time` DATETIME NOT NULL DEFAULT Now() on update NOW() COMMENT '修改时间'

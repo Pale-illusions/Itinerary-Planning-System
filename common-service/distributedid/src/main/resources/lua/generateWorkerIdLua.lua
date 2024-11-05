@@ -30,7 +30,7 @@ if (dataCenterId == max and workerId == max) then
     redis.call('hset', hashKey, workerId, '0')
 -- workerId 未达到循环最大值，自增 workerId
 elseif (workerId ~= max) then
-    resultworkerId = redis.call('hincrby', hashKey, workerIdKey, 1)
+    resultWorkerId = redis.call('hincrby', hashKey, workerIdKey, 1)
     resultDataCenterId = dataCenterId
 -- workerId 达到循环最大值，dataCenterId 未达到循环最大值，自增 dataCenterId
 elseif (dataCenterId ~= max) then
@@ -40,7 +40,7 @@ elseif (dataCenterId ~= max) then
 end
 
 -- 返回结果
-return { resultworkerId, resultDataCenterId }
+return { resultWorkerId, resultDataCenterId }
 
 
 

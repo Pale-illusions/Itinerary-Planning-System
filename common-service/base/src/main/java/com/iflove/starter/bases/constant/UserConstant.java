@@ -20,5 +20,5 @@ public class UserConstant {
     /**
      * 用户 Token Key
      */
-    public static final String USER_TOKEN_KEY = "token";
+    public static final String USER_TOKEN_KEY = "tokenId";
 }

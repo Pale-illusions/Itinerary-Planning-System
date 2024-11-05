@@ -18,11 +18,13 @@ import com.iflove.starter.user.core.UserInfoDTO;
 import com.iflove.starter.user.utils.JWTUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.rmi.ServerException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -48,16 +50,19 @@ public class UserServiceImpl implements UserService {
         if (Objects.isNull(user)) {
             throw new ClientException("用户名不存在");
         }
-        // 密码不匹配
+        // 解析密码
+        boolean match;
         try {
-            if (!EncryptionUtil.matchesAES(req.getPassword(), user.getPassword(), EncryptionUtil.PASSWORD)) {
-                throw new ServiceException("密码不正确");
-            }
+            match = EncryptionUtil.matchesAES(req.getPassword(), user.getPassword(), EncryptionUtil.PASSWORD);
         } catch (Exception e) {
             throw new ServiceException("密码解析错误");
         }
+        // 密码不匹配
+        if (!match) {
+            throw new ClientException("密码不正确");
+        }
         // token uuid
-        String tokenId = IdUtil.simpleUUID();
+        String tokenId = UUID.randomUUID().toString();
         // token过期时间
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.HOUR, RedisKey.TOKEN_EXPIRE_TIME);
@@ -80,11 +85,17 @@ public class UserServiceImpl implements UserService {
      * @param req 用户注册请求体
      */
     @Override
+    @Transactional
     public void register(UserRegisterReq req) {
+        User user = userDao.getUserByName(req.getUsername());
+        // 用户名重复
+        if (Objects.nonNull(user)) {
+            throw new ClientException("用户名已存在");
+        }
         // 创建用户对象
-        User user;
+        User registerUser;
         try {
-            user = User.builder()
+            registerUser = User.builder()
                     .name(req.getUsername())
                     .password(EncryptionUtil.encryptWithAES(req.getPassword(), EncryptionUtil.PASSWORD))
                     .build();
@@ -92,6 +103,20 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("密码解析错误");
         }
         // 保存用户
-        userDao.save(user);
+        userDao.save(registerUser);
+    }
+
+    /**
+     * 登出
+     * @param tokenId tokenId
+     */
+    @Override
+    public void logout(String tokenId) {
+        // 禁止重复登出
+        if (RedisUtil.hasKey(RedisKey.getKey(RedisKey.JWT_BLACK_LIST, tokenId))) {
+            throw new ClientException("请勿重复登出");
+        }
+        // 登出
+        RedisUtil.set(RedisKey.getKey(RedisKey.JWT_BLACK_LIST, tokenId), "");
     }
 }

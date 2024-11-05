@@ -1,13 +1,17 @@
 package com.iflove;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MapperScan("com.iflove.mapper")
+/**
+ * @author 苍镜月
+ * @version 1.0
+ * @implNote
+ */
+
 @SpringBootApplication
-public class UserApplication {
+public class GatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 }

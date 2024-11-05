@@ -1,0 +1,21 @@
+ips:
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+  nacos:
+    ip: localhost
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - name: TokenValidate
+              args:
+                whitePathPre:
+                  - /api/user/auth
