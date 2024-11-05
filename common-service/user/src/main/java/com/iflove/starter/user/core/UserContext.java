@@ -43,13 +43,13 @@ public class UserContext {
     }
 
     /**
-     * 获取上下文中用户 Token
+     * 获取上下文中用户 TokenId
      *
-     * @return 用户 Token
+     * @return 用户 TokenId
      */
-    public static String getToken() {
+    public static String getTokenId() {
         UserInfoDTO userInfoDTO = USER_THREAD_LOCAL.get();
-        return Optional.ofNullable(userInfoDTO).map(UserInfoDTO::getToken).orElse(null);
+        return Optional.ofNullable(userInfoDTO).map(UserInfoDTO::getTokenId).orElse(null);
     }
 
     /**

@@ -12,7 +12,16 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class UserDao extends ServiceImpl<UserMapper, User> {
-
+    /**
+     * 根据用户名查询用户
+     * @param name 用户名
+     * @return {@link User}
+     */
+    public User getUserByName(String name) {
+        return lambdaQuery()
+                .eq(User::getName, name)
+                .one();
+    }
 }
 
 

@@ -5,7 +5,7 @@ spring:
   profiles:
     active: local
   application:
-    name: user-service
+    name: user${unique-name:}-service
   datasource:
     url: jdbc:mysql://${ips.mysql.ip}:${ips.mysql.port}/${ips.mysql.db}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: ${ips.mysql.username}

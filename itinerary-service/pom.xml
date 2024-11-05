@@ -16,10 +16,43 @@
     </properties>
 
     <dependencies>
+        <!--starter-->
         <dependency>
             <groupId>com.iflove.starter</groupId>
-            <artifactId>Itinerary-Planning-System-common-spring-boot-starter</artifactId>
+            <artifactId>base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>web</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>database</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>convention</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>log</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>user</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

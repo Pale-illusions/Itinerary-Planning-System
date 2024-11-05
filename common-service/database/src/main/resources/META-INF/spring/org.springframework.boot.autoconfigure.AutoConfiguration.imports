@@ -16,3 +16,4 @@
 #
 
 com.iflove.starter.database.config.MybatisPlusAutoConfiguration
+com.iflove.starter.database.config.RedisAutoConfiguration
