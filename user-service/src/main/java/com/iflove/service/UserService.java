@@ -1,6 +1,7 @@
 package com.iflove.service;
 
 import com.iflove.domain.vo.request.UserLoginReq;
+import com.iflove.domain.vo.request.UserRegisterReq;
 import com.iflove.domain.vo.response.UserLoginResp;
 import com.iflove.starter.convention.result.Result;
 import jakarta.validation.Valid;
@@ -18,4 +19,11 @@ public interface UserService {
      * @return {@link UserLoginResp}
      */
     UserLoginResp login(@Valid UserLoginReq req);
+
+    /**
+     * 注册
+     * @param req 用户注册请求体
+     */
+    void register(@Valid UserRegisterReq req);
+
 }

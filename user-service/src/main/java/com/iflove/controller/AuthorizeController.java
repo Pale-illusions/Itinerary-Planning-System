@@ -1,6 +1,7 @@
 package com.iflove.controller;
 
 import com.iflove.domain.vo.request.UserLoginReq;
+import com.iflove.domain.vo.request.UserRegisterReq;
 import com.iflove.domain.vo.response.UserLoginResp;
 import com.iflove.service.UserService;
 import com.iflove.starter.convention.result.Result;
@@ -36,5 +37,15 @@ public class AuthorizeController {
         return Results.success(userService.login(req));
     }
 
-
+    /**
+     * 注册
+     * @param req 用户注册请求体
+     * @return {@link Result}
+     */
+    @PostMapping("register")
+    @Operation(summary = "注册", description = "用户注册")
+    public Result<Void> register(@RequestBody @Valid UserRegisterReq req) {
+        userService.register(req);
+        return Results.success();
+    }
 }

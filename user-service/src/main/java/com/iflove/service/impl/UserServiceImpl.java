@@ -5,6 +5,7 @@ import cn.hutool.crypto.SecureUtil;
 import com.iflove.dao.UserDao;
 import com.iflove.domain.entity.User;
 import com.iflove.domain.vo.request.UserLoginReq;
+import com.iflove.domain.vo.request.UserRegisterReq;
 import com.iflove.domain.vo.response.UserLoginResp;
 import com.iflove.service.UserService;
 import com.iflove.service.adapter.UserAdapter;
@@ -72,5 +73,25 @@ public class UserServiceImpl implements UserService {
         RedisUtil.set(RedisKey.getKey(RedisKey.JWT_WHITE_LIST, tokenId), "", RedisKey.TOKEN_EXPIRE_TIME, TimeUnit.HOURS);
         // 返回结果
         return UserAdapter.builduserLoginResp(user, token, expireTime);
+    }
+
+    /**
+     * 注册
+     * @param req 用户注册请求体
+     */
+    @Override
+    public void register(UserRegisterReq req) {
+        // 创建用户对象
+        User user;
+        try {
+            user = User.builder()
+                    .name(req.getUsername())
+                    .password(EncryptionUtil.encryptWithAES(req.getPassword(), EncryptionUtil.PASSWORD))
+                    .build();
+        } catch (Exception e) {
+            throw new ServiceException("密码解析错误");
+        }
+        // 保存用户
+        userDao.save(user);
     }
 }
