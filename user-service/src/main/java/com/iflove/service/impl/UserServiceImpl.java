@@ -6,6 +6,7 @@ import com.iflove.dao.UserDao;
 import com.iflove.domain.entity.User;
 import com.iflove.domain.vo.request.UserLoginReq;
 import com.iflove.domain.vo.request.UserRegisterReq;
+import com.iflove.domain.vo.response.UserInfoResp;
 import com.iflove.domain.vo.response.UserLoginResp;
 import com.iflove.service.UserService;
 import com.iflove.service.adapter.UserAdapter;
@@ -118,5 +119,14 @@ public class UserServiceImpl implements UserService {
         }
         // 登出
         RedisUtil.set(RedisKey.getKey(RedisKey.JWT_BLACK_LIST, tokenId), "");
+    }
+
+    @Override
+    public UserInfoResp getUserInfo(Long userId) {
+        User user = userDao.getById(userId);
+        if (Objects.isNull(user)) {
+            throw new ClientException("用户不存在");
+        }
+        return UserAdapter.buildUserInfoResp(user);
     }
 }

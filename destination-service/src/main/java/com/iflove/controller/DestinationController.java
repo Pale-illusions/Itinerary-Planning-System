@@ -6,6 +6,7 @@ import com.iflove.service.DestinationService;
 import com.iflove.starter.convention.result.Result;
 import com.iflove.starter.database.page.request.PageBaseReq;
 import com.iflove.starter.database.page.response.PageBaseResp;
+import com.iflove.starter.log.annotation.ILog;
 import com.iflove.starter.web.Results;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @Tag(name = "目的地模块")
 @RequiredArgsConstructor
+@ILog
 public class DestinationController {
     private final DestinationService destinationService;
 

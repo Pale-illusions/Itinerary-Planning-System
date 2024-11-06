@@ -29,3 +29,13 @@ spring:
               args:
                 whitePathPre:
                   - /api/destination
+
+        - id: itinerary-service
+          uri: lb://itinerary-service
+          predicates:
+            - Path=/api/itinerary/**
+          filters:
+            - name: TokenValidate
+              args:
+                whitePathPre:
+

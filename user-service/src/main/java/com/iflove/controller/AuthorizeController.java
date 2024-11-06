@@ -5,6 +5,7 @@ import com.iflove.domain.vo.request.UserRegisterReq;
 import com.iflove.domain.vo.response.UserLoginResp;
 import com.iflove.service.UserService;
 import com.iflove.starter.convention.result.Result;
+import com.iflove.starter.log.annotation.ILog;
 import com.iflove.starter.web.Results;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @Tag(name = "用户权限模块")
 @RequiredArgsConstructor
+@ILog
 public class AuthorizeController {
     private final UserService userService;
 

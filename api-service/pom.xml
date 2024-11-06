@@ -13,6 +13,26 @@
     <artifactId>api-service</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>user</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iflove.starter</groupId>
+            <artifactId>convention</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!--open feign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

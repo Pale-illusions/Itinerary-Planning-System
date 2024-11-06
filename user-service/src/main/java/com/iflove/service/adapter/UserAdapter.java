@@ -1,6 +1,7 @@
 package com.iflove.service.adapter;
 
 import com.iflove.domain.entity.User;
+import com.iflove.domain.vo.response.UserInfoResp;
 import com.iflove.domain.vo.response.UserLoginResp;
 import com.iflove.starter.user.core.UserInfoDTO;
 
@@ -24,6 +25,13 @@ public class UserAdapter {
                 .name(user.getName())
                 .token(token)
                 .expireTime(expireTime)
+                .build();
+    }
+
+    public static UserInfoResp buildUserInfoResp(User user) {
+        return UserInfoResp.builder()
+                .id(user.getId())
+                .name(user.getName())
                 .build();
     }
 }
