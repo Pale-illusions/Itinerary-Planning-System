@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -33,13 +34,13 @@ public class Route implements Serializable {
      * 出发地
      */
     @TableField(value = "start_location")
-    private Long start_location;
+    private Long startLocation;
 
     /**
      * 目的地
      */
     @TableField(value = "end_location")
-    private Long end_location;
+    private Long endLocation;
 
     /**
      * 价格 (格式：000000 前4个零代表整数部分，后2个零代表小数部分)
@@ -51,19 +52,19 @@ public class Route implements Serializable {
      * 耗时
      */
     @TableField(value = "duration")
-    private LocalTime duration;
+    private Time duration;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    private Date create_time;
+    private Date createTime;
 
     /**
      * 修改时间
      */
     @TableField(value = "update_time")
-    private Date update_time;
+    private Date updateTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -1,8 +1,11 @@
 package com.iflove.dao;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iflove.domain.entity.Itinerary;
 import com.iflove.mapper.ItineraryMapper;
+import com.iflove.starter.common.enums.StatusEnum;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +16,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ItineraryDao extends ServiceImpl<ItineraryMapper, Itinerary> {
 
+    public IPage<Itinerary> listItineraryInfo(Page page, long userId) {
+        return lambdaQuery()
+                .eq(Itinerary::getUserId, userId)
+                .eq(Itinerary::getStatus, StatusEnum.NORMAL.getStatus())
+                .page(page);
+    }
 }
 
 

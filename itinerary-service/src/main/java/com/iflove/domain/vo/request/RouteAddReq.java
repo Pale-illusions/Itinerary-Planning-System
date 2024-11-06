@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Time;
 import java.time.LocalTime;
 
 /**
@@ -22,11 +23,11 @@ import java.time.LocalTime;
 public class RouteAddReq {
     @Schema(description = "出发地")
     @NotNull(message = "出发地不能为空")
-    private Long start_location;
+    private Long startLocation;
 
     @NotNull(message = "目的地不能为空")
     @Schema(description = "目的地")
-    private Long end_location;
+    private Long endLocation;
 
     @Schema(description = "价格 (格式：000000 前4个0代表整数部分，后2个0代表小数部分)")
     @NotNull(message = "价格不能为空")
@@ -40,7 +41,7 @@ public class RouteAddReq {
     private String duration; // 耗时格式为 HH:mm:ss
 
     @Schema(hidden = true)
-    public LocalTime getDurationAsLocalTime() {
-        return LocalTime.parse(duration); // 将 duration 字符串转换为 LocalTime
+    public Time getDurationAsLocalTime() {
+        return Time.valueOf(duration); // 将 duration 字符串转换为 LocalTime
     }
 }

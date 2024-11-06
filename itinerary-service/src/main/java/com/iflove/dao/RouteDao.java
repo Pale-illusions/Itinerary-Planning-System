@@ -1,5 +1,7 @@
 package com.iflove.dao;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.iflove.domain.entity.Route;
@@ -14,6 +16,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class RouteDao extends ServiceImpl<RouteMapper, Route> {
 
+    public IPage<Route> listRouteInfo(Page page) {
+        return lambdaQuery()
+                .page(page);
+    }
 }
 
 

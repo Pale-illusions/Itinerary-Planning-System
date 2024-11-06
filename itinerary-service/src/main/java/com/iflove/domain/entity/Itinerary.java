@@ -32,28 +32,28 @@ public class Itinerary implements Serializable {
      * 创建人id
      */
     @TableField(value = "user_id")
-    private Long user_id;
+    private Long userId;
 
     /**
      * 行程信息id
      */
     @TableField(value = "route_id")
-    private Long route_id;
+    private Long routeId;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    private Date create_time;
+    private Date createTime;
 
     /**
      * 修改时间
      */
     @TableField(value = "update_time")
-    private Date update_time;
+    private Date updateTime;
 
     /**
-     * 行程状态 ( 0 未完成 / 1 已完成 / 2 已失效 )
+     * 行程状态 ( 0 未完成 / 1 已完成 )
      */
     @TableField(value = "status")
     private Integer status;

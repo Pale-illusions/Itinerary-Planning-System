@@ -9,7 +9,7 @@ CREATE TABLE `itinerary`(
                             `route_id` BIGINT UNSIGNED NOT NULL COMMENT '行程信息id',
                             `create_time` DATETIME NOT NULL DEFAULT Now() COMMENT '创建时间',
                             `update_time` DATETIME NOT NULL DEFAULT Now() on update NOW() COMMENT '修改时间',
-                            `status` INT NOT NULL DEFAULT '0' COMMENT '行程状态 ( 0 未完成 / 1 已完成 / 2 已失效 )'
+                            `status` INT NOT NULL DEFAULT '0' COMMENT '行程状态 ( 0 未完成 / 1 已完成 )'
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '行程表' ROW_FORMAT = Dynamic;
 ALTER TABLE
     `itinerary` ADD INDEX `itinerary_user_id_index`(`user_id`);
