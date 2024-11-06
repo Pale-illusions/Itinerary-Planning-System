@@ -36,9 +36,10 @@ public class RouteAddReq {
 
     @Schema(description = "耗时")
     @NotNull(message = "耗时不能为空")
-    @Pattern(regexp = "([0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])", message = "耗时格式必须为 HH:mm:ss")
+    @Pattern(regexp = "(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])", message = "耗时格式必须为 HH:mm:ss")
     private String duration; // 耗时格式为 HH:mm:ss
 
+    @Schema(hidden = true)
     public LocalTime getDurationAsLocalTime() {
         return LocalTime.parse(duration); // 将 duration 字符串转换为 LocalTime
     }

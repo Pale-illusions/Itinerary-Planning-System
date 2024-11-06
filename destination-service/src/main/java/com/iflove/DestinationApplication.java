@@ -11,5 +11,3 @@ public class DestinationApplication {
         SpringApplication.run(DestinationApplication.class, args);
     }
 }
-
-// TODO sentinel Feign 配置

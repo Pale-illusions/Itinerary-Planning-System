@@ -27,7 +27,6 @@ public class DefaultFeignConfig {
 
     @Bean
     public RequestInterceptor userInfoRequestInterceptor() {
-        System.out.println("我是DefaultFeignConfig拦截器");
         return new RequestInterceptor() {
             @Override
             public void apply(RequestTemplate template) {
