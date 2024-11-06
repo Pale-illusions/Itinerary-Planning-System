@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -50,7 +51,7 @@ public class Route implements Serializable {
      * 耗时
      */
     @TableField(value = "duration")
-    private Date duration;
+    private LocalTime duration;
 
     /**
      * 创建时间

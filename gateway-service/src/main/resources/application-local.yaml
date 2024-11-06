@@ -4,7 +4,7 @@ ips:
     port: 6379
     password: 123456
   nacos:
-    ip: localhost
+    ip: localhost:8848
 
 spring:
   cloud:
@@ -19,3 +19,13 @@ spring:
               args:
                 whitePathPre:
                   - /api/user/auth
+
+        - id: destination-service
+          uri: lb://destination-service
+          predicates:
+            - Path=/api/destination/**
+          filters:
+            - name: TokenValidate
+              args:
+                whitePathPre:
+                  - /api/destination

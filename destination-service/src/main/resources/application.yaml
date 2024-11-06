@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 9093
 
 spring:
   profiles:
@@ -68,7 +68,7 @@ springdoc:
     - group: 'default'
       paths-to-match: '/**'
       packages-to-scan:
-        - com.iflove.contorller
+        - com.iflove.controller
 
 knife4j:
   enable: true

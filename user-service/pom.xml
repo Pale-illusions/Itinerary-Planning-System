@@ -80,12 +80,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <!--api-->
-        <dependency>
-            <groupId>com.iflove</groupId>
-            <artifactId>api-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
         <!--web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

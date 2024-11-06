@@ -1,5 +1,7 @@
 package com.iflove.dao;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.iflove.domain.entity.Destination;
 import com.iflove.mapper.DestinationMapper;
@@ -13,6 +15,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class DestinationDao extends ServiceImpl<DestinationMapper, Destination> {
 
+    public Destination getByName(String name) {
+        return lambdaQuery()
+                .eq(Destination::getName, name)
+                .one();
+    }
+
+    public IPage<Destination> listDestination(Page page) {
+        return lambdaQuery()
+                .page(page);
+    }
 }
 
 

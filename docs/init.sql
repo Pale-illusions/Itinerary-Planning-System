@@ -41,7 +41,7 @@ CREATE TABLE `user`(
 DROP TABLE IF EXISTS `destination`;
 CREATE TABLE `destination`(
                               `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                              `name` VARCHAR(255) NOT NULL COMMENT '目的地名称',
+                              `name` VARCHAR(255) UNIQUE NOT NULL COMMENT '目的地名称',
                               `create_time` DATETIME NOT NULL DEFAULT Now() COMMENT '创建时间',
                               `update_time` DATETIME NOT NULL DEFAULT Now() on update NOW() COMMENT '修改时间'
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '目的地表' ROW_FORMAT = Dynamic;
