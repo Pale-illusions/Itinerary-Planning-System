@@ -1,7 +1,5 @@
 package com.iflove.starter.user.core;
 
-import com.alibaba.ttl.TransmittableThreadLocal;
-
 import java.util.Optional;
 
 /**
@@ -11,7 +9,7 @@ import java.util.Optional;
  */
 
 public class UserContext {
-    private static final ThreadLocal<UserInfoDTO> USER_THREAD_LOCAL = new TransmittableThreadLocal<>();
+    private static final ThreadLocal<UserInfoDTO> USER_THREAD_LOCAL = new ThreadLocal<>();
 
     /**
      * 设置用户至上下文
