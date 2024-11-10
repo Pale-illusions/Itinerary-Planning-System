@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    container_name: gateway-service
+    ports:
+      - "8080:8080"
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "8081:8081"
+
+  destination-service:
+    build:
+      context: ./destination-service
+      dockerfile: Dockerfile
+    container_name: destination-service
+    ports:
+      - "9093:9093"
+
+  itinerary-service:
+    build:
+      context: ./itinerary-service
+      dockerfile: Dockerfile
+    container_name: itinerary-service
+    ports:
+      - "9092:9092"

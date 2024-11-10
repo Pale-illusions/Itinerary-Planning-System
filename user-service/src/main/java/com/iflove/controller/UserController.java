@@ -3,6 +3,9 @@ package com.iflove.controller;
 import com.iflove.domain.vo.response.UserInfoResp;
 import com.iflove.service.UserService;
 import com.iflove.starter.convention.result.Result;
+import com.iflove.starter.frequencycontrol.annotation.FrequencyControl;
+import com.iflove.starter.frequencycontrol.domain.enums.FrequencyControlStrategyEnum;
+import com.iflove.starter.frequencycontrol.domain.enums.FrequencyControlTargetEnum;
 import com.iflove.starter.log.annotation.ILog;
 import com.iflove.starter.user.core.UserContext;
 import com.iflove.starter.web.Results;
@@ -40,12 +43,17 @@ public class UserController {
         return Results.success();
     }
 
+    @FrequencyControl(time = 5, count = 3, target = FrequencyControlTargetEnum.UID)
+    @FrequencyControl(time = 30, count = 5, target = FrequencyControlTargetEnum.UID)
+    @FrequencyControl(time = 60, count = 10, target = FrequencyControlTargetEnum.UID)
     @GetMapping("userInfo/me")
     @Operation(summary = "获取用户信息(当前用户)", description = "获取用户信息(当前用户)")
     public Result<UserInfoResp> getUserInfo() {
         return Results.success(userService.getUserInfo(Long.parseLong((UserContext.getUserId()))));
     }
 
+    @FrequencyControl(strategy = FrequencyControlStrategyEnum.SLIDING_WINDOW, target = FrequencyControlTargetEnum.EL, spEl = "#id")
+    @FrequencyControl(strategy = FrequencyControlStrategyEnum.TOKEN_BUCKET, target = FrequencyControlTargetEnum.EL, spEl = "#id")
     @GetMapping("userInfo/{id}")
     @Operation(summary = "获取用户信息", description = "获取用户信息")
     public Result<UserInfoResp> getUserInfo(@PathVariable Long id) {

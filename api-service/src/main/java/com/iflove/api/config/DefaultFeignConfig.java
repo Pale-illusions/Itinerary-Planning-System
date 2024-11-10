@@ -1,5 +1,7 @@
 package com.iflove.api.config;
 
+import com.iflove.api.client.fallback.DestinationClientFallback;
+import com.iflove.api.client.fallback.UserClientFallback;
 import com.iflove.starter.bases.constant.UserConstant;
 import com.iflove.starter.user.core.UserContext;
 import feign.Logger;
@@ -47,4 +49,13 @@ public class DefaultFeignConfig {
         };
     }
 
+    @Bean
+    public DestinationClientFallback destinationClientFallback() {
+        return new DestinationClientFallback();
+    }
+
+    @Bean
+    public UserClientFallback userClientFallback() {
+        return new UserClientFallback();
+    }
 }

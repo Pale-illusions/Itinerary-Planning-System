@@ -25,6 +25,7 @@
         <module>common</module>
         <module>web</module>
         <module>log</module>
+        <module>frequencycontrol</module>
     </modules>
 
 
